@@ -1,23 +1,23 @@
 ---
 name: plugin-builder
-description: Design, build, audit, repair, validate, package, install when supported, or evolve AI plugins. Use when the user wants a new plugin or changes to an existing plugin, including skills, MCP servers/tools, MCP Apps/UI, extensions, authentication, security, testing, deployment, installation, migration, or submission readiness. Do not trigger merely to use a plugin or perform the plugin's target-domain task.
+description: Design, build, audit, repair, validate, package, create, inspect, update, install when supported, migrate, and prepare AI plugins for release. Use when the user wants a new plugin or changes to an existing plugin, including skills, MCP servers/tools, MCP Apps/UI, extensions, authentication, security, testing, deployment, installation, release history, migration, or public submission readiness. Do not trigger merely to use a plugin or perform the plugin's target-domain task.
 ---
 
 # Plugin Builder
 
-Create the smallest plugin architecture that can reliably complete the user's job, prove the properties that matter, and carry the result through the requested lifecycle as far as the current host actually permits. Plugin Builder is a specialist builder: its output is a plugin, a verified plugin change, or a validated install/release artifact.
+Create the smallest plugin architecture that can reliably complete the user's job, prove the properties that matter, and carry the result through the requested lifecycle as far as the current host actually permits. Plugin Builder is a specialist builder: its output is a plugin, a verified plugin change, a validated install/release artifact, or a truthfully reported lifecycle state.
 
 ## 1. Establish the plugin contract
 
-Identify the user job, target users, supported and unsupported intents, input/output contracts, external systems, authority boundaries, target hosts, distribution mode, critical quality gates, and evidence required for completion. Ask only for information that materially changes architecture, authorization, or public claims; otherwise make reversible assumptions and continue.
+Identify the user job, target users, supported and unsupported intents, input/output contracts, external systems, authority boundaries, target hosts, distribution mode, critical quality gates, source ownership, and evidence required for completion. Ask only for information that materially changes architecture, authorization, or public claims; otherwise make reversible assumptions and continue.
 
-For nontrivial work, use `references/build-workflow.md` and load relevant neurons from `knowledge/README.md`. Do not load all 160 neurons by default.
+For nontrivial work, use `references/build-workflow.md` and load relevant neurons from `knowledge/README.md`. Do not load all 168 neurons by default.
 
 ## 2. Search architecture when the choice matters
 
 For each capability decide whether it belongs in a Skill, MCP tool/server, resource, prompt, MCP App, OpenAI Extension, backend/storage layer, reused external service, or nowhere. When several materially different topologies are feasible, use `references/architecture-search.md`: generate a small candidate set, reject infeasible routes, prune dominated designs, simulate critical failures, and select the smallest route that can pass the acceptance floor.
 
-Do not confuse “more components” with “more capable”. Reuse verified existing infrastructure when it already satisfies the contract. Preserve portable MCP behavior; add host-specific extensions only when they materially improve the job and have an appropriate fallback.
+Support skills-only, existing remote MCP, local stdio, MCP App/UI, Extension, managed/Site/Git-owned, and cloud-hosted routes when the required real host/deployment capability exists. Do not force every request into one template.
 
 Treat current surface support, SDK APIs, schema versions, submission rules, and product limits as dynamic facts. Recheck authoritative current sources before relying on them for release decisions.
 
@@ -28,9 +28,10 @@ Start from a portable root `plugin.json` package and add only components require
 - `scripts/init_plugin.py` for a minimal portable scaffold;
 - `scripts/validate_plugin.py` for package/component validation;
 - `scripts/package_plugin.py` for deterministic packaging;
-- `scripts/audit_plugin_package.py` for an additional static secret/symlink audit.
+- `scripts/audit_plugin_package.py` for an additional static secret/symlink audit;
+- `scripts/build_chatgpt_plugin.py` for the reproducible ChatGPT Plugin Builder package.
 
-Compatibility overlays are derived from the canonical source; they do not become an independent source of truth. Generate file/server/UI structure from the architecture, not from a fixed maximal template.
+Compatibility overlays are derived from canonical source; they do not become an independent source of truth. Generate structure from the selected topology rather than a maximal starter template.
 
 ## 4. Build contracts the model and server can both enforce
 
@@ -48,31 +49,56 @@ MCP Apps and host Extensions are progressive enhancements. UI-enabled tools must
 
 Use deterministic validation for manifests/schemas/packages; contract tests for tools; auth/security tests for trust boundaries; host tests for discovery/UI; and end-to-end user-job evaluations for behavior. Separate static validity, deterministic tests, model-behavior evaluations, human review, and production telemetry.
 
-Every fixed defect should gain a focused regression case. Classify the failure before patching. Re-open architecture search only when the failure is structural; do not add layers to repair a local schema, auth, state, or implementation defect.
+Every fixed defect should gain a focused regression case. Classify the failure before patching. Re-open architecture search only when the failure is structural.
 
-## 7. Install/update through a real host adapter
+## 7. Execute the complete plugin lifecycle
 
-When the user asks to install, save, connect, or update, use `references/installation-adapters.md`. Discover the actual mutation path exposed by the current environment and by the plugin's owning source. Prefer direct account create/update only when that capability is genuinely available and appropriate; otherwise use the owning Git/Site/local/submission flow or return the validated package with the exact remaining step.
+Use `references/creator-parity-execution.md` and `references/installation-adapters.md` for create/inspect/update/install/history work.
 
-Creation must avoid duplicates. Updates must resolve exact identity, preserve scope/audience/unrelated behavior, guard against stale releases when supported, and reconcile concurrent changes. Package mutation, MCP reachability, authentication, and working host behavior are separate states.
+When the current host exposes authenticated lifecycle actions, Plugin Builder may use them to:
+- create one validated private plugin from a completed archive;
+- resolve exact editable plugin identity and metadata;
+- inspect current text files;
+- retrieve current or historical full archives when necessary;
+- list releases/history;
+- update the exact plugin with the observed current-release concurrency guard.
 
-After any mutation, read back persisted state when possible, verify release/version and affected files, then perform a harmless representative discovery/call/UI check appropriate to the change. Never claim installation from packaging alone or working behavior from an upload response alone.
+These are host privileges, not capabilities created by instructions. Never invent a lifecycle action, endpoint, account permission, plugin ID, release ID, or successful mutation. If the action is unavailable, finish all source/build/package/evaluation work and report `NO_MUTATION_ADAPTER` or `PACKAGE_READY`.
 
-## 8. Release without losing state
+Creation must avoid duplicates. Updates must preserve identity, scope, audience, hosting, data, unrelated files, and source ownership. Account-package overlay semantics must not be mistaken for file deletion support.
 
-Preserve plugin identity, source ownership, versioning, server/app bindings, data, and unrelated behavior. For public distribution, distinguish archive readiness, draft upload, connection/setup, review submission, approval, and publication. Never invent publisher facts, URLs, reviewer evidence, test results, credentials, or attestations.
+## 8. Verify installation/update independently from packaging
 
-## 9. Completion states
+After any lifecycle mutation, read back persisted metadata/version/release and changed files when possible. Verify MCP reachability, authentication/connection, tool discovery, representative harmless behavior, and UI separately when relevant. An upload response proves only the mutation it reports.
+
+Use `INSTALLED_VERIFIED` only when persisted state and relevant smoke evidence support it.
+
+## 9. Prepare public submission without inventing evidence
+
+For public intent, distinguish implementation completion, public-upload copy, listing metadata, required URLs/assets, review cases, demo evidence, reviewer access, scans, domain/developer verification, attestations, draft upload, review submission, approval, and publication.
+
+Skills-only and MCP submissions have different review requirements. Never invent publisher identity, policy URLs, credentials, recordings, test execution, attestations, approval, or publication. Use `SUBMISSION_GAPS` until all required evidence for the requested state exists.
+
+## 10. Parity-plus evaluation
+
+Use `evaluation/CREATOR_PARITY_MATRIX.md` to check baseline Plugin Creator workflow coverage and `evaluation/BUILDER_BENCHMARK.md` for comparative evaluation.
+
+Do not claim universal superiority from feature count. A stronger-builder claim requires:
+- no material regression on critical correctness/security/authorization gates;
+- baseline lifecycle coverage under comparable host capabilities;
+- repeatable advantage on at least one predeclared family such as architecture search, adversarial assurance, repair/recovery, deterministic build verification, or post-install verification.
+
+## 11. Completion states
 
 Use precise status:
 - `COMPLETE`: required artifact/change exists and required gates are evidenced.
 - `INSTALLED_VERIFIED`: requested installation/update is persisted and relevant read-back/smoke checks pass.
 - `PACKAGE_READY`: source/package is validated but host mutation was not requested or is unavailable.
-- `NO_MUTATION_ADAPTER`: build is ready but this environment exposes no valid install/update path.
+- `NO_MUTATION_ADAPTER`: build is ready but this environment exposes no valid install/update action.
 - `BLOCKED`: essential source/access/input is unavailable.
 - `REPLAN_REQUIRED`: architecture no longer satisfies the contract.
 - `APPROVAL_REQUIRED`: a genuinely new consequential action requires authorization.
 - `FAIL_CLOSED`: authorization/integrity uncertainty makes continuing unsafe.
 - `SUBMISSION_GAPS`: implementation is ready but public-review materials or portal checks remain.
 
-Report what was actually built, tested, saved, installed, connected, or published and what remains unverified. Do not claim universal superiority. Demonstrate improvement with broader capability coverage, stronger gates, or comparative evaluation when evidence exists.
+Report what was actually built, tested, saved, installed, connected, submitted, approved, or published and what remains unverified.
