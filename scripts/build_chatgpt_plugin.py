@@ -94,7 +94,8 @@ def write_zip(stage: Path, output: Path):
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for src in sorted(p for p in stage.rglob("*") if p.is_file()):
             rel = src.relative_to(stage)
-            zi = zipfile.ZipInfo(rel.as_posix(), date_time=(1980, 1, 1, 0, 0, 0))
+            arc = Path(stage.name) / rel
+            zi = zipfile.ZipInfo(arc.as_posix(), date_time=(1980, 1, 1, 0, 0, 0))
             zi.compress_type = zipfile.ZIP_DEFLATED
             zi.external_attr = 0o100644 << 16
             z.writestr(zi, src.read_bytes())
