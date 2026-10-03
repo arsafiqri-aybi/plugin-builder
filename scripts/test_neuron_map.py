@@ -9,5 +9,7 @@ text=(root/'SKILL.md').read_text(encoding='utf-8')
 assert 'name: plugin-builder' in text
 assert 'model is not an access-control boundary' in text.lower()
 assert 'installation-adapters.md' in text
-assert 'all 160 neurons' in text
+assert 'creator-parity-execution.md' in text
+assert 'CREATOR_PARITY_MATRIX.md' in text
+assert 'all 168 neurons' in text
 print('Plugin Builder architecture tests: PASS')
