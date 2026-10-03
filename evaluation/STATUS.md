@@ -1,8 +1,10 @@
 # Verification Status
 
 ## Verified in this build
-- 18 lobe files exist.
-- Each lobe contains exactly 8 neuron sections (144 total).
+- Native scaffold/validate/package tooling has deterministic regression coverage.
+- Architecture-search and installation-adapter lobes are structurally validated.
+- 20 lobe files exist.
+- Each lobe contains exactly 8 neuron sections (160 total).
 - Every neuron records decision model, failure signature, quality gate, synapse rule and source keys.
 - Runtime draft, retrieval index, source registry and operational references exist.
 - Static neuron-map validator and tests pass in the generated package.
