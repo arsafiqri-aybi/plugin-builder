@@ -259,3 +259,30 @@ Each neuron has: **decision → failure signal → quality gate → synapses →
 ### Lobe 17 — Plugin Builder Meta-Engine & Neuron Orchestration
 - Purpose: Mengubah seluruh ilmu menjadi builder yang memilih neuron relevan, menghasilkan plugin, menguji, memperbaiki, dan berhenti dengan evidence.
 - File: `knowledge/17-plugin-builder-meta-engine-neuron-orchestration.md`
+
+
+- **18.N1 Candidate topology generation** → sources: INTERNAL-SCALE, OAI-PKG, OAI-MCP
+- **18.N2 Feasibility filtering** → sources: INTERNAL-SCALE, OAI-PKG, OAI-MCP, OAI-AUTH
+- **18.N3 Dominance pruning** → sources: INTERNAL-SCALE, INTERNAL-GOV, NIST-SSDF
+- **18.N4 Quality-attribute trade-off map** → sources: INTERNAL-SCALE, INTERNAL-GOV, NIST-SSDF, HAX
+- **18.N5 Failure-mode simulation** → sources: OWASP-AGENT, NIST-SSDF, INTERNAL-GOV
+- **18.N6 Build-versus-reuse decision** → sources: OAI-MCP, INSTALLED-CREATOR, NIST-SSDF
+- **18.N7 Evolution runway** → sources: NIST-SSDF, OAI-MCP, INTERNAL-SCALE
+- **18.N8 Architecture proof and decision record** → sources: INTERNAL-SCALE, INTERNAL-SKILL, NIST-SSDF
+
+### Lobe 18 — Architecture Search & Synthesis
+- Purpose: Mencari beberapa topology yang layak, menyaring infeasible/dominated routes, mensimulasikan failure, dan memilih arsitektur paling sederhana yang memenuhi kontrak.
+- File: `knowledge/18-architecture-search-synthesis.md`
+
+- **19.N1 Host capability discovery** → sources: OAI-PKG, OAI-SUB, INSTALLED-CREATOR
+- **19.N2 Installation adapter selection** → sources: INSTALLED-CREATOR, OAI-PKG, OAI-SUB
+- **19.N3 Artifact normalization per adapter** → sources: OAI-PKG, AGENT-PLUGINS, INSTALLED-CREATOR
+- **19.N4 Mutation authorization boundary** → sources: INTERNAL-PROMPTING, INTERNAL-SKILL, OAI-SUB
+- **19.N5 Guarded create/update** → sources: INSTALLED-CREATOR, INTERNAL-GOV
+- **19.N6 Connection and authentication handoff** → sources: OAI-MCP, OAI-AUTH, OAI-SUB
+- **19.N7 Read-back and smoke verification** → sources: INSTALLED-CREATOR, INTERNAL-SKILL, INTERNAL-PROMPTING
+- **19.N8 Adapter failure recovery** → sources: INTERNAL-GOV, INSTALLED-CREATOR, INTERNAL-SKILL
+
+### Lobe 19 — Host Installation & Release Adaptation
+- Purpose: Memilih adapter install/update nyata, menjaga identity/state, dan memverifikasi persisted result serta host behavior tanpa mengarang capability.
+- File: `knowledge/19-host-installation-release-adaptation.md`
