@@ -1,16 +1,17 @@
 # Verification Status
 
 ## Verified in this build
+- Creator parity matrix and lifecycle execution contract are present and structurally wired into the runtime.
 - Native scaffold/validate/package tooling has deterministic regression coverage.
 - Architecture-search and installation-adapter lobes are structurally validated.
-- 20 lobe files exist.
-- Each lobe contains exactly 8 neuron sections (160 total).
+- 21 lobe files exist.
+- Each lobe contains exactly 8 neuron sections (168 total).
 - Every neuron records decision model, failure signature, quality gate, synapse rule and source keys.
 - Runtime draft, retrieval index, source registry and operational references exist.
 - Static neuron-map validator and tests pass in the generated package.
 - Private ChatGPT Plugin release 0.1.0 was created successfully from the original runtime foundation.
 - ChatGPT package v0.2.0 is now reproducibly built and structurally inspected in GitHub Actions from the canonical repository source.
-- The v0.2.0 package contains the 20-lobe / 160-neuron runtime, global NEURON_MAP, architecture-search and installation-adapter lobes, native scaffold/validate/package tooling, and comparative benchmark protocol.
+- The v0.3.0 package contains the 21-lobe / 168-neuron runtime, global NEURON_MAP, architecture-search and installation-adapter lobes, native scaffold/validate/package tooling, and comparative benchmark protocol.
 
 - Comparative benchmark protocol against a baseline builder is defined in `BUILDER_BENCHMARK.md`.
 
@@ -26,4 +27,4 @@ Those require target-host and plugin-specific tests.
 
 ## Current release handoff
 
-The canonical v0.2.0 ChatGPT package is package-ready. Updating the already-installed private ChatGPT plugin is a separate host mutation. In the 2026-10-04 verification session, the private-plugin create/update adapter used for the earlier release was not exposed, so the repository does not record v0.2.0 as installed. This is intentionally reported as `PACKAGE_READY`, not `INSTALLED_VERIFIED`.
+The canonical v0.3.0 ChatGPT package is package-ready. Updating the already-installed private ChatGPT plugin is a separate host mutation. In the 2026-10-04 verification session, the private-plugin create/update adapter used for the earlier release was not exposed, so the repository does not record v0.2.0 as installed. This is intentionally reported as `PACKAGE_READY`, not `INSTALLED_VERIFIED`.
