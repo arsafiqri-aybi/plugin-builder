@@ -286,3 +286,17 @@ Each neuron has: **decision → failure signal → quality gate → synapses →
 ### Lobe 19 — Host Installation & Release Adaptation
 - Purpose: Memilih adapter install/update nyata, menjaga identity/state, dan memverifikasi persisted result serta host behavior tanpa mengarang capability.
 - File: `knowledge/19-host-installation-release-adaptation.md`
+
+
+- **20.N1 Creator capability inventory** → sources: INSTALLED-CREATOR, OAI-PKG, OAI-SUB
+- **20.N2 Create-private execution contract** → sources: INSTALLED-CREATOR, INTERNAL-GOV
+- **20.N3 Source inspection and history contract** → sources: INSTALLED-CREATOR, INTERNAL-GOV
+- **20.N4 Guarded update parity** → sources: INSTALLED-CREATOR, NIST-SSDF, INTERNAL-GOV
+- **20.N5 Source-owner routing parity** → sources: INSTALLED-CREATOR, OAI-PKG
+- **20.N6 Create-route parity: skills, MCP, Apps, Extensions, local/cloud** → sources: OAI-PKG, OAI-MCP, MCP-APPS, OAI-EXT, INSTALLED-CREATOR
+- **20.N7 Submission preparation and state separation** → sources: OAI-SUB, OAI-GUIDE, INSTALLED-CREATOR
+- **20.N8 Parity-plus regression gate** → sources: INTERNAL-SKILL, INTERNAL-SCALE, INTERNAL-GOV, INSTALLED-CREATOR
+
+### Lobe 20 — Plugin Lifecycle Execution & Creator Parity
+- Purpose: Mencakup seluruh baseline Plugin Creator lifecycle sambil mempertahankan architecture-search, adversarial assurance, deterministic build, repair, dan post-install verification.
+- File: `knowledge/20-plugin-lifecycle-execution-creator-parity.md`
