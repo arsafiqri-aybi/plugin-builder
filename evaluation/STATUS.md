@@ -10,6 +10,8 @@
 - Static neuron-map validator and tests pass in the generated package.
 - Private ChatGPT Plugin release 0.1.0 was created successfully from the same runtime foundation.
 
+- Comparative benchmark protocol against a baseline builder is defined in `BUILDER_BENCHMARK.md`.
+
 ## Not yet proven
 - Automatic invocation/selection in every ChatGPT/Codex surface.
 - That generated plugins outperform all other builders.
