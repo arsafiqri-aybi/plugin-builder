@@ -14,3 +14,5 @@ jobs:
           python-version: '3.11'
       - run: python scripts/validate_neuron_map.py
       - run: python scripts/test_neuron_map.py
+      - run: python -m py_compile scripts/*.py
+      - run: python scripts/test_plugin_tooling.py
