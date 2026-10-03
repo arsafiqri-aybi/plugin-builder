@@ -30,5 +30,7 @@
 | `15` | [Versioning, Update & Migration](15-versioning-update-migration.md) | Memperbarui plugin tanpa kehilangan identity, audience, data, compatibility atau behavior yang tidak diminta berubah. |
 | `16` | [Distribution, Review & Publication](16-distribution-review-publication.md) | Menyiapkan plugin untuk private/workspace/public distribution dengan evidence dan metadata yang benar. |
 | `17` | [Plugin Builder Meta-Engine & Neuron Orchestration](17-plugin-builder-meta-engine-neuron-orchestration.md) | Mengubah seluruh ilmu menjadi builder yang memilih neuron relevan, menghasilkan plugin, menguji, memperbaiki, dan berhenti dengan evidence. |
+| `18` | [Architecture Search & Synthesis](18-architecture-search-synthesis.md) | Mencari topology yang layak, menyaring infeasible/dominated routes, mensimulasikan failure, dan memilih arsitektur paling sederhana yang memenuhi kontrak. |
+| `19` | [Host Installation & Release Adaptation](19-host-installation-release-adaptation.md) | Memilih adapter install/update nyata, menjaga identity/state, dan memverifikasi persisted result serta host behavior tanpa mengarang capability. |
 
-**Total: 18 lobes × 8 neurons = 144 neurons.**
+**Total: 20 lobes × 8 neurons = 160 neurons.**
