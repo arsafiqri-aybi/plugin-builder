@@ -1,0 +1,24 @@
+{
+  "problem_contract": {
+    "user_job": "",
+    "hard_constraints": [],
+    "critical_gates": []
+  },
+  "candidates": [
+    {
+      "id": "A",
+      "topology": "",
+      "components": [],
+      "trust_boundaries": [],
+      "reused_dependencies": [],
+      "new_dependencies": [],
+      "quality_tradeoffs": {},
+      "failure_modes": [],
+      "install_path": "",
+      "feasible": null
+    }
+  ],
+  "selected_candidate": "",
+  "rejected": [],
+  "replan_triggers": []
+}
