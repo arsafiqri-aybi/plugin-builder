@@ -1,0 +1,10 @@
+interface:
+  display_name: Plugin Builder
+  short_description: Build and validate production-grade AI plugins
+  default_prompt: Use $plugin-builder to design and build this plugin.
+policy:
+  products:
+    - chatgpt
+    - codex
+    - api
+  allow_implicit_invocation: true
