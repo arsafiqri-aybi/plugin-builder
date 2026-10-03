@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "job": {
+    "goal": "",
+    "users": [],
+    "supported_intents": [],
+    "unsupported_intents": []
+  },
+  "environment": {
+    "hosts": [],
+    "distribution": "private|workspace|public",
+    "external_systems": []
+  },
+  "architecture": {
+    "topology": "",
+    "components": [],
+    "trust_boundaries": [],
+    "state_owners": []
+  },
+  "quality_gates": {
+    "critical": [],
+    "important": [],
+    "optional": []
+  },
+  "security": {
+    "auth_required": null,
+    "scopes": [],
+    "consequential_actions": []
+  },
+  "verification": {
+    "static": [],
+    "contract": [],
+    "behavioral": [],
+    "security": [],
+    "host": []
+  },
+  "status": "PLANNING"
+}

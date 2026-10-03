@@ -1,0 +1,12 @@
+{
+  "id": "CASE-001",
+  "kind": "positive|negative|failure|security",
+  "prompt": "",
+  "setup": {},
+  "expected_tools": [],
+  "expected_arguments": {},
+  "expected_user_outcome": "",
+  "prohibited_actions": [],
+  "evidence": [],
+  "status": "NOT_RUN"
+}
