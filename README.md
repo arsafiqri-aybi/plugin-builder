@@ -6,9 +6,9 @@ This package is the research/architecture foundation produced on **2026-10-04**.
 
 ## Brain model
 
-- **20 lobes** = major decision domains.
+- **21 lobes** = major decision domains.
 - **8 neurons per lobe** = operational knowledge units.
-- **160 neurons total**.
+- **168 neurons total**.
 - **Synapses** connect neurons across requirements, architecture, security, UX, operations, evaluation, and release.
 - Runtime should load only the lobes needed for the active build decision. Full access is not full-context loading.
 
@@ -35,3 +35,10 @@ Plugin Builder is not only a knowledge package. It contains its own deterministi
 - `scripts/test_plugin_tooling.py` — regression tests for the native builder path.
 
 Architecture search and installation are separated: Plugin Builder chooses/builds the canonical design itself, then uses a real host adapter only for the final mutation when one exists.
+
+
+## Creator parity execution
+
+Plugin Builder v0.3 adds an explicit baseline-parity lifecycle layer covering the Plugin Creator workflow families: skills-only / existing-MCP / local / Apps / Extensions creation, private account create when a real host action exists, exact-identity inspection, current/historical source retrieval, release listing, guarded update, source-owner routing, and public-submission preparation.
+
+Privileged ChatGPT account mutations remain host capabilities. Plugin Builder orchestrates them when exposed and never claims that packaged instructions create those permissions. The parity gate is tracked in `evaluation/CREATOR_PARITY_MATRIX.md`; broader advantages are tested separately rather than asserted from feature count.
