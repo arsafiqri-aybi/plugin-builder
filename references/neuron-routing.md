@@ -2,8 +2,11 @@
 
 Load by uncertainty, not by project size.
 
-- What are we building? → lobes 01–03.
-- Package/schema issue → 04.
+- Source conflict/freshness/uncertainty → 00.
+- What object/host boundary are we building? → 01.
+- Requirements/authority/done-state → 02.
+- Capability placement/topology basics → 03.
+- Package/schema/compatibility issue → 04.
 - Server/protocol issue → 05.
 - Tool selection/schema issue → 06.
 - Retrieval/data/context issue → 07.
@@ -14,7 +17,8 @@ Load by uncertainty, not by project size.
 - Privacy/logging/tenant issue → 12.
 - Quality/test uncertainty → 13.
 - Production/latency/outage issue → 14.
-- Update/migration issue → 15.
+- Update/migration/source ownership issue → 15.
 - Directory/review/publishing issue → 16.
 - Builder orchestration/repair/stopping → 17.
-- Source conflict/freshness/uncertainty → 00.
+- Several plausible architectures / build-vs-reuse / trade-off uncertainty → 18.
+- Install/save/connect/update host path / read-back verification → 19.
