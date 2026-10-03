@@ -22,3 +22,4 @@ Load by uncertainty, not by project size.
 - Builder orchestration/repair/stopping → 17.
 - Several plausible architectures / build-vs-reuse / trade-off uncertainty → 18.
 - Install/save/connect/update host path / read-back verification → 19.
+- Baseline Plugin Creator lifecycle parity / create-inspect-history-update-submission execution → 20.
