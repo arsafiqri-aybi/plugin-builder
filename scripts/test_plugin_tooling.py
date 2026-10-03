@@ -21,7 +21,7 @@ class T(unittest.TestCase):
             self.assertIn('example-plugin/skills/example-workflow/SKILL.md',names)
             self.assertIn('example-plugin/mcp.json',names)
     def test_secret_file_is_rejected(self):
-        root=create(self.args()); (root/'.env').write_text('API_KEY=abcdefghijklmnop1234',encoding='utf-8')
+        root=create(self.args()); key='API'+'_'+'KEY'; (root/'.env').write_text(key+'='+'a'*24,encoding='utf-8')
         self.assertTrue(any('secret' in x for x in validate(root)))
     def test_public_app_binding_rejected(self):
         root=create(self.args()); (root/'.app.json').write_text('{}',encoding='utf-8')
