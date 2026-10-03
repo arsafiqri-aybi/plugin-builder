@@ -1,10 +1,11 @@
 interface:
   display_name: Plugin Builder
-  short_description: Build and validate production-grade AI plugins
-  default_prompt: Use $plugin-builder to design and build this plugin.
+  short_description: Build, validate, and install production-grade plugins
+  default_prompt: Use $plugin-builder to design, build, verify, and install this plugin when the host supports it.
 policy:
   products:
-    - chatgpt
-    - codex
-    - api
+  - chatgpt
+  - codex
+  - api
+  - atlas
   allow_implicit_invocation: true
