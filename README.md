@@ -6,9 +6,9 @@ This package is the research/architecture foundation produced on **2026-10-04**.
 
 ## Brain model
 
-- **18 lobes** = major decision domains.
+- **20 lobes** = major decision domains.
 - **8 neurons per lobe** = operational knowledge units.
-- **144 neurons total**.
+- **160 neurons total**.
 - **Synapses** connect neurons across requirements, architecture, security, UX, operations, evaluation, and release.
 - Runtime should load only the lobes needed for the active build decision. Full access is not full-context loading.
 
@@ -23,3 +23,15 @@ The knowledge architecture and runtime draft are built and statically validated.
 3. `NEURON_MAP.md` — global brain/synapse map.
 4. `references/build-workflow.md` — end-to-end plugin creation workflow.
 5. `references/source-registry.md` — evidence/provenance.
+
+## Native builder tooling
+
+Plugin Builder is not only a knowledge package. It contains its own deterministic authoring path:
+
+- `scripts/init_plugin.py` — minimal portable plugin scaffold from explicit components.
+- `scripts/validate_plugin.py` — canonical package/component/security checks.
+- `scripts/package_plugin.py` — deterministic single-directory ZIP packaging.
+- `scripts/audit_plugin_package.py` — additional static audit.
+- `scripts/test_plugin_tooling.py` — regression tests for the native builder path.
+
+Architecture search and installation are separated: Plugin Builder chooses/builds the canonical design itself, then uses a real host adapter only for the final mutation when one exists.
