@@ -16,3 +16,26 @@ jobs:
       - run: python scripts/test_neuron_map.py
       - run: python -m py_compile scripts/*.py
       - run: python scripts/test_plugin_tooling.py
+      - name: Build ChatGPT Plugin package
+        run: python scripts/build_chatgpt_plugin.py --version 0.2.0 --output dist/Plugin-Builder-ChatGPT-v0.2.0.zip
+      - name: Inspect package
+        run: |
+          python - <<'PY'
+          import json, zipfile
+          p='dist/Plugin-Builder-ChatGPT-v0.2.0.zip'
+          with zipfile.ZipFile(p) as z:
+              names=z.namelist()
+              assert 'plugin-builder/plugin.json' in names
+              assert 'plugin-builder/skills/plugin-builder/SKILL.md' in names
+              assert 'plugin-builder/skills/plugin-builder/NEURON_MAP.md' in names
+              assert 'plugin-builder/skills/plugin-builder/knowledge/18-architecture-search-synthesis.md' in names
+              assert 'plugin-builder/skills/plugin-builder/knowledge/19-host-installation-release-adaptation.md' in names
+              manifest=json.loads(z.read('plugin-builder/plugin.json'))
+              assert manifest['version']=='0.2.0'
+          print('ChatGPT package: PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plugin-builder-chatgpt-v0.2.0
+          path: dist/Plugin-Builder-ChatGPT-v0.2.0.zip
+          if-no-files-found: error
