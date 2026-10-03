@@ -32,5 +32,6 @@
 | `17` | [Plugin Builder Meta-Engine & Neuron Orchestration](17-plugin-builder-meta-engine-neuron-orchestration.md) | Mengubah seluruh ilmu menjadi builder yang memilih neuron relevan, menghasilkan plugin, menguji, memperbaiki, dan berhenti dengan evidence. |
 | `18` | [Architecture Search & Synthesis](18-architecture-search-synthesis.md) | Mencari topology yang layak, menyaring infeasible/dominated routes, mensimulasikan failure, dan memilih arsitektur paling sederhana yang memenuhi kontrak. |
 | `19` | [Host Installation & Release Adaptation](19-host-installation-release-adaptation.md) | Memilih adapter install/update nyata, menjaga identity/state, dan memverifikasi persisted result serta host behavior tanpa mengarang capability. |
+| `20` | [Plugin Lifecycle Execution & Creator Parity](20-plugin-lifecycle-execution-creator-parity.md) | Mencakup create, inspect, archive/history, releases, guarded update, create-route parity, dan submission preparation dengan host-privilege boundaries yang eksplisit. |
 
-**Total: 20 lobes × 8 neurons = 160 neurons.**
+**Total: 21 lobes × 8 neurons = 168 neurons.**
