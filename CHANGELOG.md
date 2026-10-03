@@ -21,3 +21,13 @@
 - CI now builds and inspects `Plugin-Builder-ChatGPT-v0.2.0.zip` on every push.
 - The package includes 20 lobes / 160 neurons, NEURON_MAP, native authoring tooling, architecture search, installation adapters, and the comparative builder benchmark.
 - Package readiness is tracked separately from account installation/read-back verification.
+
+
+## Creator parity v0.3.0 — 2026-10-04
+- Expanded the brain to 21 lobes / 168 neurons.
+- Added Plugin Lifecycle Execution & Creator Parity lobe.
+- Added explicit parity workflows for private create, metadata/files inspection, archive/history retrieval, release listing, guarded account update, source-owner routing, create-route coverage, and public submission preparation.
+- Added `CREATOR_PARITY_MATRIX.md` and creator-parity execution contract.
+- Added valid ChatGPT/Codex skill metadata to the runtime package.
+- CI now builds and verifies the reproducible ChatGPT v0.3.0 artifact.
+- Retained Plugin Builder-only architecture search, failure simulation, adversarial assurance, deterministic native tooling, repair regression, and post-install verification.
