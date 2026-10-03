@@ -17,25 +17,37 @@ jobs:
       - run: python -m py_compile scripts/*.py
       - run: python scripts/test_plugin_tooling.py
       - name: Build ChatGPT Plugin package
-        run: python scripts/build_chatgpt_plugin.py --version 0.2.0 --output dist/Plugin-Builder-ChatGPT-v0.2.0.zip
+        run: python scripts/build_chatgpt_plugin.py --version 0.3.0 --output dist/Plugin-Builder-ChatGPT-v0.3.0.zip
       - name: Inspect package
         run: |
           python - <<'PY'
           import json, zipfile
-          p='dist/Plugin-Builder-ChatGPT-v0.2.0.zip'
+          p='dist/Plugin-Builder-ChatGPT-v0.3.0.zip'
           with zipfile.ZipFile(p) as z:
               names=z.namelist()
-              assert 'plugin-builder/plugin.json' in names
-              assert 'plugin-builder/skills/plugin-builder/SKILL.md' in names
-              assert 'plugin-builder/skills/plugin-builder/NEURON_MAP.md' in names
-              assert 'plugin-builder/skills/plugin-builder/knowledge/18-architecture-search-synthesis.md' in names
-              assert 'plugin-builder/skills/plugin-builder/knowledge/19-host-installation-release-adaptation.md' in names
+              required=[
+                  'plugin-builder/plugin.json',
+                  'plugin-builder/skills/plugin-builder/SKILL.md',
+                  'plugin-builder/skills/plugin-builder/NEURON_MAP.md',
+                  'plugin-builder/skills/plugin-builder/agents/openai.yaml',
+                  'plugin-builder/skills/plugin-builder/knowledge/18-architecture-search-synthesis.md',
+                  'plugin-builder/skills/plugin-builder/knowledge/19-host-installation-release-adaptation.md',
+                  'plugin-builder/skills/plugin-builder/knowledge/20-plugin-lifecycle-execution-creator-parity.md',
+                  'plugin-builder/skills/plugin-builder/references/creator-parity-execution.md',
+                  'plugin-builder/skills/plugin-builder/evaluation/CREATOR_PARITY_MATRIX.md',
+                  'plugin-builder/skills/plugin-builder/evaluation/BUILDER_BENCHMARK.md'
+              ]
+              for item in required:
+                  assert item in names, item
               manifest=json.loads(z.read('plugin-builder/plugin.json'))
-              assert manifest['version']=='0.2.0'
-          print('ChatGPT package: PASS')
+              assert manifest['version']=='0.3.0'
+              skill=z.read('plugin-builder/skills/plugin-builder/SKILL.md').decode()
+              assert 'all 168 neurons' in skill
+              assert 'complete plugin lifecycle' in skill.lower()
+          print('ChatGPT package v0.3.0: PASS')
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: plugin-builder-chatgpt-v0.2.0
-          path: dist/Plugin-Builder-ChatGPT-v0.2.0.zip
+          name: plugin-builder-chatgpt-v0.3.0
+          path: dist/Plugin-Builder-ChatGPT-v0.3.0.zip
           if-no-files-found: error
