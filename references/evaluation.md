@@ -16,3 +16,8 @@ Evaluate separate properties instead of one global score.
 | Submission | listing/cases/demo/reviewer access for exact release |
 
 Never convert static validation into a claim that model behavior, security, or installation is proven.
+
+
+## Comparative builder benchmark
+
+When the goal is to demonstrate that Plugin Builder is stronger than another builder, use `evaluation/BUILDER_BENCHMARK.md`. Run the same tasks, environment, tools, and evaluator gates. Do not infer superiority from file count, neuron count, or self-review.
