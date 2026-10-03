@@ -1,0 +1,20 @@
+{
+  "target": {
+    "mode": "private|workspace|local|public",
+    "plugin_id": null,
+    "source_owner": ""
+  },
+  "adapter": "account_create|account_update|managed_source|local_marketplace|submission_portal|package_only",
+  "authorization": {
+    "mutation_authorized": false,
+    "new_authorization_needed": false
+  },
+  "preconditions": [],
+  "mutation": {},
+  "verification": {
+    "read_back": [],
+    "connection": [],
+    "smoke": []
+  },
+  "fallback": []
+}
