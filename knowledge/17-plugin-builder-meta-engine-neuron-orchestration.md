@@ -10,7 +10,7 @@ Use this lobe when the active build uncertainty is primarily about **plugin buil
 
 **Decision model.** Dari request, aktifkan hanya lobes/neurons yang material terhadap plugin target.
 
-**Failure signature.** Semua 144 neuron dimuat setiap saat.
+**Failure signature.** Semua 160 neuron dimuat setiap saat.
 
 **Gate / evidence of mastery.** Retrieval plan kecil dan dapat dijelaskan.
 
