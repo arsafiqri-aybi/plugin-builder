@@ -4,7 +4,7 @@ import re, sys
 ROOT=Path(__file__).resolve().parents[1]
 issues=[]
 files=sorted((ROOT/'knowledge').glob('[0-9][0-9]-*.md'))
-if len(files)!=18: issues.append(f'expected 18 lobe files, found {len(files)}')
+if len(files)!=20: issues.append(f'expected 20 lobe files, found {len(files)}')
 count=0
 for f in files:
     text=f.read_text(encoding='utf-8')
@@ -13,8 +13,8 @@ for f in files:
     if len(ns)!=8: issues.append(f'{f.name}: expected 8 neurons, found {len(ns)}')
     for label in ['**Decision model.**','**Failure signature.**','**Gate / evidence of mastery.**','**Synapses.**','**Primary sources.**']:
         if text.count(label)!=8: issues.append(f'{f.name}: {label} count={text.count(label)}')
-if count!=144: issues.append(f'expected 144 neurons, found {count}')
-required=['SKILL.md','README.md','NEURON_MAP.md','references/source-registry.md','references/build-workflow.md','references/security-gates.md','references/evaluation.md']
+if count!=160: issues.append(f'expected 160 neurons, found {count}')
+required=['SKILL.md','README.md','NEURON_MAP.md','references/source-registry.md','references/build-workflow.md','references/security-gates.md','references/evaluation.md','references/architecture-search.md','references/installation-adapters.md']
 for p in required:
     if not (ROOT/p).is_file(): issues.append(f'missing {p}')
 print('Plugin Builder neuron validation: '+('PASS' if not issues else 'FAIL'))
