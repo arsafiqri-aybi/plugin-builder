@@ -8,4 +8,6 @@ assert 'PASS' in p.stdout
 text=(root/'SKILL.md').read_text(encoding='utf-8')
 assert 'name: plugin-builder' in text
 assert 'model is not an access-control boundary' in text.lower()
+assert 'installation-adapters.md' in text
+assert 'all 160 neurons' in text
 print('Plugin Builder architecture tests: PASS')
