@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-RUNTIME_DIRS = ("knowledge", "references", "assets", "scripts")
+RUNTIME_DIRS = ("knowledge", "references", "assets", "scripts", "agents")
 RUNTIME_ROOT_FILES = ("SKILL.md", "NEURON_MAP.md")
 SKIP_NAMES = {".DS_Store"}
 SKIP_PARTS = {".git", "__pycache__", ".pytest_cache", ".mypy_cache"}
@@ -21,7 +21,7 @@ def plugin_manifest(version: str) -> dict:
         "name": "plugin-builder",
         "version": version,
         "description": (
-            "Design, build, audit, validate, repair, install when supported, "
+            "Design, build, audit, validate, repair, create or update when supported, "
             "and evolve production-grade AI plugins from requirements through verified release."
         ),
         "author": {"name": "Arsafiqri Ummati Aybi"},
@@ -34,7 +34,7 @@ def plugin_manifest(version: str) -> dict:
                         "Plugin Builder is a specialist system for creating or improving AI plugins. "
                         "It performs requirement modeling, architecture search, Skill/MCP/tool/UI design, "
                         "authentication and authorization design, security and side-effect analysis, "
-                        "deterministic package validation, adversarial and behavioral evaluation, repair, "
+                        "deterministic package validation, creator-parity lifecycle execution, adversarial and behavioral evaluation, repair, "
                         "versioned packaging, and host-aware install/update verification without inventing "
                         "capabilities or evidence."
                     ),
@@ -83,11 +83,12 @@ def copy_runtime(stage: Path):
 
     # Keep comparative evaluation in the runtime package as evidence protocol,
     # while avoiding engineering-only status/docs/CI files.
-    bench = ROOT / "evaluation" / "BUILDER_BENCHMARK.md"
-    if bench.is_file():
-        dst = skill / "evaluation" / "BUILDER_BENCHMARK.md"
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(bench, dst)
+    for eval_name in ("BUILDER_BENCHMARK.md", "CREATOR_PARITY_MATRIX.md"):
+        src = ROOT / "evaluation" / eval_name
+        if src.is_file():
+            dst = skill / "evaluation" / eval_name
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
 
 def write_zip(stage: Path, output: Path):
     output.parent.mkdir(parents=True, exist_ok=True)
