@@ -1,6 +1,7 @@
 # Verification Status
 
 ## Verified in this build
+- v0.3.0 private release is installed and release-source read-back verified.
 - Creator parity matrix and lifecycle execution contract are present and structurally wired into the runtime.
 - Native scaffold/validate/package tooling has deterministic regression coverage.
 - Architecture-search and installation-adapter lobes are structurally validated.
