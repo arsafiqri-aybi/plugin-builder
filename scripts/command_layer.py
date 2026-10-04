@@ -8,7 +8,10 @@ from urllib.parse import urlparse
 
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 CREATE_ALIASES = {"create_personal_plugin", "create_private_plugin_from_mcp"}
+SELF_UPDATE_ALIASES = {"self_update_plugin_builder"}
 ALLOWED_CREATE_KEYS = {"mcp_url", "name", "display_name", "description", "author"}
+ALLOWED_SELF_UPDATE_KEYS = {"target_version", "change", "repo"}
+SEMVER_RE = re.compile(r"^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$")
 
 def normalize_name(value: str) -> str:
     value = re.sub(r"[^a-z0-9]+", "-", value.strip().lower())
@@ -45,17 +48,50 @@ def parse_command(text: str) -> dict:
     if not isinstance(expr, ast.Call) or not isinstance(expr.func, ast.Name):
         raise ValueError("expected a creator-style command call")
     command = expr.func.id
-    if command not in CREATE_ALIASES:
+    if command not in CREATE_ALIASES and command not in SELF_UPDATE_ALIASES:
         raise ValueError(f"unsupported command alias: {command}")
     if expr.args:
         raise ValueError("use keyword arguments only")
+    allowed = ALLOWED_CREATE_KEYS if command in CREATE_ALIASES else ALLOWED_SELF_UPDATE_KEYS
     args = {}
     for kw in expr.keywords:
-        if kw.arg is None or kw.arg not in ALLOWED_CREATE_KEYS:
+        if kw.arg is None or kw.arg not in allowed:
             raise ValueError(f"unsupported argument: {kw.arg}")
         if kw.arg in args:
             raise ValueError(f"duplicate argument: {kw.arg}")
         args[kw.arg] = literal(kw.value)
+
+    if command in SELF_UPDATE_ALIASES:
+        version = args.get("target_version")
+        change = args.get("change")
+        repo = args.get("repo") or "arsafiqri-aybi/plugin-builder"
+        if not isinstance(version, str) or not SEMVER_RE.fullmatch(version.strip()):
+            raise ValueError("target_version is required and must be semantic version")
+        if not isinstance(change, str) or not change.strip():
+            raise ValueError("change is required")
+        if not isinstance(repo, str) or "/" not in repo:
+            raise ValueError("repo must be owner/name")
+        return {
+            "command": command,
+            "intent": "self_update_plugin_builder",
+            "canonical_source": {"kind": "git", "repository": repo},
+            "target_version": version.strip(),
+            "change": change.strip(),
+            "workflow": [
+                "resolve_current_source_and_installed_release",
+                "freeze_known_good_state",
+                "edit_canonical_source",
+                "run_regression_and_security_tests",
+                "build_and_inspect_candidate_archive",
+                "discover_generic_host_update_adapter",
+                "guarded_activate_if_available",
+                "read_back_release_and_critical_files",
+                "smoke_verify_and_report_exact_state"
+            ],
+            "forbidden_dependency": "Plugin Creator",
+            "fallback_state": "PACKAGE_READY"
+        }
+
     if "mcp_url" not in args or not isinstance(args["mcp_url"], str):
         raise ValueError("mcp_url is required")
     url = validate_url(args["mcp_url"].strip())
