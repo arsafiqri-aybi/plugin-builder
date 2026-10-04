@@ -31,3 +31,12 @@
 - Added valid ChatGPT/Codex skill metadata to the runtime package.
 - CI now builds and verifies the reproducible ChatGPT v0.3.0 artifact.
 - Retained Plugin Builder-only architecture search, failure simulation, adversarial assurance, deterministic native tooling, repair regression, and post-install verification.
+
+
+## Command layer v0.3.1 — 2026-10-04
+- Added safe creator-style command aliases including `create_personal_plugin(mcp_url=...)`.
+- Added `references/command-layer.md` with canonical remote-MCP → package → adapter → read-back workflow.
+- Added `scripts/command_layer.py` using AST literal parsing; no eval or invented host actions.
+- Added regression tests for URL validation, embedded credentials, unknown arguments, and code-execution rejection.
+- CI builds and verifies `Plugin-Builder-ChatGPT-v0.3.1.zip`.
+- Account mutation remains adapter-dependent; package readiness is reported separately from installation.
