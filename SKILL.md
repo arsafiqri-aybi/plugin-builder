@@ -77,6 +77,26 @@ create_personal_plugin(mcp_url="https://example.com/mcp")
 
 Treat these as intent aliases, not literal host APIs. Normalize them into the canonical existing-remote-MCP build flow: validate URL → optionally probe MCP with a real MCP-capable action → generate minimal `plugin.json` + `mcp.json` → validate/audit → check duplicate/source ownership → discover real host create adapter → create from archive when available → read back → verify connection/auth/smoke separately. Never invent a `create_personal_plugin` tool or pass the MCP URL directly to an archive-only create action.
 
+## 7.6. Self-update without Plugin Creator dependency
+
+Use `references/self-update.md` when the user asks Plugin Builder to update itself. The canonical self-update path is source-first and adapter-neutral:
+
+```text
+self-update intent
+→ resolve canonical Git source + installed identity
+→ freeze known-good commit/release
+→ edit Plugin Builder source
+→ run regression/security tests
+→ build and inspect deterministic candidate package
+→ discover a generic host update capability by behavior
+→ guarded activation if available
+→ read-back + smoke verification
+```
+
+Do not require or invoke Plugin Creator by name. Plugin Creator may be used only as an optional adapter if the current host happens to expose its lifecycle actions; its absence must not block source editing, testing, packaging, or release preparation.
+
+Never let self-update grant Plugin Builder new account privileges. If no valid host mutation adapter exists, finish the self-update build and return `PACKAGE_READY` / `NO_MUTATION_ADAPTER` rather than fabricating installation.
+
 ## 8. Verify installation/update independently from packaging
 
 After any lifecycle mutation, read back persisted metadata/version/release and changed files when possible. Verify MCP reachability, authentication/connection, tool discovery, representative harmless behavior, and UI separately when relevant. An upload response proves only the mutation it reports.
