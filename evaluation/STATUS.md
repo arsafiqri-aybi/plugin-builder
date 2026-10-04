@@ -1,6 +1,7 @@
 # Verification Status
 
 ## Verified in this build
+- v0.3.2 self-update lifecycle is implemented with an adapter-neutral planner, command alias, anti-bricking contract, and deterministic regression tests.
 - v0.3.1 command layer parses creator-style MCP install aliases safely and is covered by deterministic regression tests.
 - v0.3.0 private release is installed and release-source read-back verified.
 - Creator parity matrix and lifecycle execution contract are present and structurally wired into the runtime.
@@ -35,3 +36,8 @@ The canonical v0.3.0 ChatGPT package is package-ready. Updating the already-inst
 ## Current v0.3.1 handoff
 
 The canonical v0.3.1 ChatGPT package passed CI and is ready for account update. During the final mutation step, the authenticated private-plugin lifecycle adapter was no longer exposed in the current session, so v0.3.1 is recorded as `PACKAGE_READY`, not `INSTALLED_VERIFIED`. No rebuild is required when the adapter becomes available again.
+
+
+## Current v0.3.2 handoff
+
+The v0.3.2 source is designed to self-update without a Plugin Creator dependency. It can update canonical source, test, and build its own next release. Installed-account activation still requires a real host update capability. In the current session, Plugin Management exposes permission/uninstall/dependency functions but no generic private-plugin update mutation, so the candidate release must remain `PACKAGE_READY` until such an adapter is exposed.
