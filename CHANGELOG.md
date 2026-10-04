@@ -40,3 +40,11 @@
 - Added regression tests for URL validation, embedded credentials, unknown arguments, and code-execution rejection.
 - CI builds and verifies `Plugin-Builder-ChatGPT-v0.3.1.zip`.
 - Account mutation remains adapter-dependent; package readiness is reported separately from installation.
+
+
+## Independent self-update v0.3.2 — 2026-10-04
+- Added adapter-neutral Plugin Builder self-update lifecycle.
+- Added `self_update_plugin_builder(...)` creator-style command alias.
+- Added anti-bricking rules, known-good state freeze, semver-forward validation, generic host-adapter discovery, guarded activation, and read-back verification.
+- Added self-update planner and regression tests.
+- Removed Plugin Creator as a required dependency for Plugin Builder source/build/release evolution; it remains only an optional host adapter when exposed.
