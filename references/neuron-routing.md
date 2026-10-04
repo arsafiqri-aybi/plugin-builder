@@ -24,3 +24,4 @@ Load by uncertainty, not by project size.
 - Install/save/connect/update host path / read-back verification → 19.
 - Baseline Plugin Creator lifecycle parity / create-inspect-history-update-submission execution → 20.
 - Creator-style alias such as `create_personal_plugin(mcp_url=...)` → command layer reference + lobes 19 and 20.
+- Plugin Builder self-update / evolve itself → self-update reference + lobes 15, 17, 19, and 20.
