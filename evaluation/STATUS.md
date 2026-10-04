@@ -41,3 +41,12 @@ The canonical v0.3.1 ChatGPT package passed CI and is ready for account update. 
 ## Current v0.3.2 handoff
 
 The v0.3.2 source is designed to self-update without a Plugin Creator dependency. It can update canonical source, test, and build its own next release. Installed-account activation still requires a real host update capability. In the current session, Plugin Management exposes permission/uninstall/dependency functions but no generic private-plugin update mutation, so the candidate release must remain `PACKAGE_READY` until such an adapter is exposed.
+
+
+## v0.3.2 self-update verification
+
+- GitHub Actions run `37170065666` completed successfully.
+- Neuron validation, architecture tests, native plugin tooling tests, command-layer tests, and self-update tests passed.
+- The deterministic ChatGPT package `Plugin-Builder-ChatGPT-v0.3.2.zip` was built and inspected successfully.
+- The package contains the self-update runtime contract, command alias, planner, and regression tests.
+- The current session exposes no generic private-plugin update mutation outside Plugin Creator, so the installed account release was intentionally not mutated. v0.3.2 is `PACKAGE_READY`; source self-update is verified, account activation remains host-dependent.
