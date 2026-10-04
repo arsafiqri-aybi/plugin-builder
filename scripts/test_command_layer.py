@@ -31,5 +31,16 @@ class CommandLayerTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             parse_command('create_personal_plugin(mcp_url=__import__("os").getcwd())')
 
+    def test_self_update_alias(self):
+        p=parse_command('self_update_plugin_builder(target_version="0.3.2", change="Add independent self-update lifecycle")')
+        self.assertEqual(p["intent"],"self_update_plugin_builder")
+        self.assertEqual(p["target_version"],"0.3.2")
+        self.assertEqual(p["forbidden_dependency"],"Plugin Creator")
+        self.assertEqual(p["fallback_state"],"PACKAGE_READY")
+
+    def test_self_update_rejects_bad_version(self):
+        with self.assertRaises(ValueError):
+            parse_command('self_update_plugin_builder(target_version="next", change="x")')
+
 if __name__=="__main__":
     unittest.main()
