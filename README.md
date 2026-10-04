@@ -42,3 +42,12 @@ Architecture search and installation are separated: Plugin Builder chooses/build
 Plugin Builder v0.3 adds an explicit baseline-parity lifecycle layer covering the Plugin Creator workflow families: skills-only / existing-MCP / local / Apps / Extensions creation, private account create when a real host action exists, exact-identity inspection, current/historical source retrieval, release listing, guarded update, source-owner routing, and public-submission preparation.
 
 Privileged ChatGPT account mutations remain host capabilities. Plugin Builder orchestrates them when exposed and never claims that packaged instructions create those permissions. The parity gate is tracked in `evaluation/CREATOR_PARITY_MATRIX.md`; broader advantages are tested separately rather than asserted from feature count.
+
+
+## Independent self-update
+
+Plugin Builder can evolve its own canonical Git source, run validation/regression gates, build a deterministic candidate release, and discover a generic host update adapter without depending on Plugin Creator. Host account mutation remains a separate authority boundary: if no valid update adapter is exposed, Plugin Builder finishes at a verified `PACKAGE_READY` candidate rather than claiming installation.
+
+Self-update uses a two-phase model:
+1. source/release construction;
+2. guarded host activation and read-back.
