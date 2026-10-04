@@ -1,7 +1,7 @@
 interface:
   display_name: Plugin Builder
   short_description: Build, inspect, update, and verify plugins
-  default_prompt: Use $plugin-builder to design, build, validate, create or update this plugin, and verify the resulting lifecycle state.
+  default_prompt: Use $plugin-builder to design, build, validate, create or update this plugin, including concise commands like create_personal_plugin(mcp_url=...), and verify the resulting lifecycle state.
 policy:
   products:
     - CHAT
