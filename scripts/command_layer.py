@@ -11,7 +11,7 @@ CREATE_ALIASES = {"create_personal_plugin", "create_private_plugin_from_mcp"}
 SELF_UPDATE_ALIASES = {"self_update_plugin_builder"}
 ALLOWED_CREATE_KEYS = {"mcp_url", "name", "display_name", "description", "author"}
 ALLOWED_SELF_UPDATE_KEYS = {"target_version", "change", "repo"}
-SEMVER_RE = re.compile(r"^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$")
+SEMVER_RE = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$")
 
 def normalize_name(value: str) -> str:
     value = re.sub(r"[^a-z0-9]+", "-", value.strip().lower())
