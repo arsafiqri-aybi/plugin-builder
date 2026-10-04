@@ -79,7 +79,7 @@ Treat these as intent aliases, not literal host APIs. Normalize them into the ca
 
 ## 7.6. Self-update without Plugin Creator dependency
 
-Use `references/self-update.md` when the user asks Plugin Builder to update itself. The canonical self-update path is source-first and adapter-neutral:
+Use `references/self-update.md` when the user asks Plugin Builder to update itself. Recognize `self_update_plugin_builder(target_version=..., change=...)` as a convenience intent alias, not a host API. The canonical self-update path is source-first and adapter-neutral:
 
 ```text
 self-update intent
