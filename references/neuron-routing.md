@@ -23,3 +23,4 @@ Load by uncertainty, not by project size.
 - Several plausible architectures / build-vs-reuse / trade-off uncertainty → 18.
 - Install/save/connect/update host path / read-back verification → 19.
 - Baseline Plugin Creator lifecycle parity / create-inspect-history-update-submission execution → 20.
+- Creator-style alias such as `create_personal_plugin(mcp_url=...)` → command layer reference + lobes 19 and 20.
