@@ -67,6 +67,16 @@ These are host privileges, not capabilities created by instructions. Never inven
 
 Creation must avoid duplicates. Updates must preserve identity, scope, audience, hosting, data, unrelated files, and source ownership. Account-package overlay semantics must not be mistaken for file deletion support.
 
+## 7.5. Convenience command aliases
+
+Use `references/command-layer.md` for concise creator-style commands such as:
+
+```text
+create_personal_plugin(mcp_url="https://example.com/mcp")
+```
+
+Treat these as intent aliases, not literal host APIs. Normalize them into the canonical existing-remote-MCP build flow: validate URL → optionally probe MCP with a real MCP-capable action → generate minimal `plugin.json` + `mcp.json` → validate/audit → check duplicate/source ownership → discover real host create adapter → create from archive when available → read back → verify connection/auth/smoke separately. Never invent a `create_personal_plugin` tool or pass the MCP URL directly to an archive-only create action.
+
 ## 8. Verify installation/update independently from packaging
 
 After any lifecycle mutation, read back persisted metadata/version/release and changed files when possible. Verify MCP reachability, authentication/connection, tool discovery, representative harmless behavior, and UI separately when relevant. An upload response proves only the mutation it reports.
